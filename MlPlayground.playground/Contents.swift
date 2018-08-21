@@ -1,5 +1,7 @@
 // first: the simplest UI version. Need user interactive, with MLImageClassifierBuilder.
 
+// https://github.com/appcoda/CreateMLQuickDemo/raw/master/resources/FruitImages.zip  test image Download url
+
 //import CreateMLUI
 //let builder = MLImageClassifierBuilder()
 //builder.showInLiveView()
