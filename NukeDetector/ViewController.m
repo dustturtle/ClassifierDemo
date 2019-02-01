@@ -6,6 +6,8 @@
 //  Copyright © 2018年 GuanZhenwei. All rights reserved.
 //
 
+// (🍌和🍎)
+// 目前这里使用的是外勤365的图片训练得到的分类器，大小100kb左右。7个分类，6000+张图片。
 
 #import "ViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -124,7 +126,15 @@
                                                  rgbColorSpace,
                                                  (CGBitmapInfo)kCGImageAlphaNoneSkipFirst);
     NSParameterAssert(context);
-    CGContextConcatCTM(context, CGAffineTransformIdentity);
+    
+    CGContextConcatCTM(context, CGAffineTransformMakeRotation(0));
+    CGAffineTransform flipVertical = CGAffineTransformMake( 1, 0, 0, -1, 0, CGImageGetHeight(cgRef));
+    CGContextConcatCTM(context, flipVertical);
+    CGAffineTransform flipHorizontal = CGAffineTransformMake( -1.0, 0.0, 0.0, 1.0, CGImageGetWidth(cgRef), 0.0);
+    CGContextConcatCTM(context, flipHorizontal);
+    
+    //CGContextConcatCTM(context, CGAffineTransformIdentity);
+    
     CGContextDrawImage(context, CGRectMake(0,
                                            0,
                                            frameWidth,
